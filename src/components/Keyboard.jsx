@@ -4,7 +4,7 @@ import TextArea from "./TextArea";
 
 function Keyboard(){
   const [text, setText] = useState("");
-  
+
   // Create a reference to the keyboard div to focus on it when the page loads
   const keyboardRef = useRef(null);
 
@@ -35,11 +35,11 @@ function Keyboard(){
     }
   }
 return(
-  <div id="main">
+  <div id="main" tabIndex="0" onKeyDown={detectKeyDown} onKeyUp={detectKeyUp} ref={keyboardRef}>
     <div>
       <TextArea id="text-area" className="text-area" placeholder="What you type, will appear here!" value={text} ></TextArea>
     </div>
-    <div id="keyboard" tabIndex="0" onKeyDown={detectKeyDown} onKeyUp={detectKeyUp} ref={keyboardRef}>
+    <div id="keyboard">
         <div id="top-row">
           <KButton id="q" className="general-btn" text="q"></KButton>
           <KButton id="w" className="general-btn" text="w"></KButton>
