@@ -1,5 +1,6 @@
 import {useEffect, useRef} from "react";
 import KButton from "./Buttons";
+import TextArea from "./TextArea";
 
 function Keyboard(){
 
@@ -28,6 +29,10 @@ function Keyboard(){
     }
   }
 return(
+  <div id="main">
+    <div>
+      <TextArea id="text-area" className="text-area" placeholder="What you type, will appear here!" value="Test value"></TextArea>
+    </div>
     <div id="keyboard" tabIndex="0" onKeyDown={detectKeyDown} onKeyUp={detectKeyUp} ref={keyboardRef}>
         <div id="top-row">
           <KButton id="q" className="general-btn" text="q"></KButton>
@@ -62,6 +67,7 @@ return(
           <KButton id="m" className="general-btn" text="m"></KButton>
         </div>
     </div>
+  </div>
     );
 }
 
