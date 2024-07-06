@@ -1,9 +1,10 @@
-import {useEffect, useRef} from "react";
+import {useState, useEffect, useRef} from "react";
 import KButton from "./Buttons";
 import TextArea from "./TextArea";
 
 function Keyboard(){
-
+  const [text, setText] = useState("");
+  
   // Create a reference to the keyboard div to focus on it when the page loads
   const keyboardRef = useRef(null);
 
@@ -12,6 +13,10 @@ function Keyboard(){
     keyboardRef.current.focus();
   }, []);
 
+  const changeText = (event) => {
+    setText(text + event.key);
+  }
+
   // Add an event listener to the keyboard div to detect key is pressed down
   const detectKeyDown = (event) => {
     console.log("Key Pressed")
@@ -19,6 +24,7 @@ function Keyboard(){
     if(btn){
       btn.classList.add("active");
     }
+    changeText(event);
   }
 
   // Add an event listener to the keyboard div to detect key is released
@@ -31,7 +37,7 @@ function Keyboard(){
 return(
   <div id="main">
     <div>
-      <TextArea id="text-area" className="text-area" placeholder="What you type, will appear here!" value="Test value"></TextArea>
+      <TextArea id="text-area" className="text-area" placeholder="What you type, will appear here!" value={text} ></TextArea>
     </div>
     <div id="keyboard" tabIndex="0" onKeyDown={detectKeyDown} onKeyUp={detectKeyUp} ref={keyboardRef}>
         <div id="top-row">
