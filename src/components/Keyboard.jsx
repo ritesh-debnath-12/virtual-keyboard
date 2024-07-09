@@ -14,7 +14,16 @@ function Keyboard(){
   }, []);
 
   const changeText = (event) => {
-    setText(text + event.key);
+    if(event.key === "Ctrl" || event.key === "Alt" || event.key === "Shift" || event.key === "Enter"){
+      return; // Do nothing if Ctrt, Alt, Shift or Enter key is pressed
+    }
+    else if(event.key === "Backspace"){
+      setText(text.slice(0, -1)); // Remove the last character if Backspace key is pressed
+    }
+    else{
+      setText(text + event.key);
+    }
+    return;
   }
 
   // Add an event listener to the keyboard div to detect key is pressed down
