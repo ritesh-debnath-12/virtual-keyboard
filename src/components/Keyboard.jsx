@@ -4,8 +4,9 @@ import TextArea from "./TextArea";
 
 function Keyboard() {
   const [text, setText] = useState("");
-  const [isShiftHolded, setisShiftHolded] = useState(false);
-  const [isCapsLockOn, setisCapsLockOn] = useState(false);
+  const [isShiftHolded, setIsShiftHolded] = useState(false);
+  const [isCapsLockOn, setIsCapsLockOn] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   // Create a reference to the keyboard div to focus on it when the page loads
   const keyboardRef = useRef(null);
@@ -31,7 +32,7 @@ function Keyboard() {
       "CapsLock",
     ];
     if (badKeys.includes(event.key)) {
-      return; // Do nothing if Ctrt, Alt, Shift or Enter key is pressed
+      return; // Do nothing if Ctrl, Alt, Shift or Enter key is pressed
     } else if (event.key === "Tab") {
       setText(text + "    "); // Add 4 spaces if Tab key is pressed
     } else if (event.key === "Backspace") {
@@ -44,12 +45,11 @@ function Keyboard() {
 
   // Add an event listener to the keyboard div to detect key is pressed down
   const detectKeyDown = (event) => {
-    console.log("Key Pressed");
+    // console.log("Key Pressed"); DEBUG STATEMENT REMOVED....
     // Handle Shift key press
     if (event.key === "Shift") {
-      setisShiftHolded(true);
+      setIsShiftHolded(true);
     }
-
     let btn = document.getElementById(event.code);
     if (btn) {
       if (event.key === "CapsLock") {
@@ -65,14 +65,19 @@ function Keyboard() {
     changeText(event);
   };
 
+  const handleThemeChange = () => {
+    // console.log("Theme Changed"); DEBUG STATEMENT REMOVED
+    setIsDarkMode(!isDarkMode);
+  };
+
   // Add an event listener to the keyboard div to detect key is released
   const detectKeyUp = (event) => {
     // Handle Shift key release
     if (event.key === "Shift") {
-      setisShiftHolded(false);
+      setIsShiftHolded(false);
     }
     if (event.key === "CapsLock") {
-      setisCapsLockOn(!isCapsLockOn);
+      setIsCapsLockOn(!isCapsLockOn);
     }
 
     let btn = document.getElementById(event.code);
@@ -83,8 +88,10 @@ function Keyboard() {
 
   return (
     <div
+      div
       id="main"
       tabIndex="-1"
+      className={isDarkMode ? "dark-theme" : "light-theme"}
       onKeyDown={detectKeyDown}
       onKeyUp={detectKeyUp}
       ref={keyboardRef}
@@ -363,6 +370,12 @@ function Keyboard() {
           ></KButton>
         </div>
         <div id="space-row">
+          <KButton
+            id="ThemeControl"
+            className="general-btn theme-control-btn"
+            text={isDarkMode ? "🌙" : "☀️"}
+            onClick={handleThemeChange}
+          ></KButton>
           <KButton
             id="ControlLeft"
             className="general-btn"

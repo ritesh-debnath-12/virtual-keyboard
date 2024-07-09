@@ -5,6 +5,7 @@
   overflow: hidden;
 }
 
+
 #main {
   padding: 20px;
 }
@@ -19,6 +20,36 @@
   margin-top: 20px;
 }
 
+#number-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#top-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#middle-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bottom-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#space-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .general-btn {
   width: 100px;
   height: 100px;
@@ -28,7 +59,7 @@
   background-color: #f1f1f1;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: not-allowed; 
   display: inline-block;
   margin: 10px;
   transition: background-color 0.3s ease-in;
@@ -54,8 +85,11 @@
   width: 400px;
 }
 
+.theme-control-btn{
+  cursor: pointer;
+}
+
 .general-btn.active {
-  background-color: purple;
   transition: background-color 0.1s ease-in;
 }
 
@@ -65,3 +99,54 @@
   padding: 10px;
   font-size: 1.8rem;
 }
+
+/* Handling Themes */
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light-theme .general-btn {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.light-theme .text-area {
+  background-color: #f0f0f0;
+  color: #000000;
+  caret-color: #000000;
+  border: none;
+}
+
+.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark-theme .general-btn {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+.dark-theme .text-area {
+  background-color: #555555;
+  color: #ffffff;
+  caret-color: #ffffff;
+  border: none;
+}
+
+.light-theme .general-btn.active {
+  background-color: purple;
+}
+
+.dark-theme .general-btn.active {
+  background-color: red;
+}
+
