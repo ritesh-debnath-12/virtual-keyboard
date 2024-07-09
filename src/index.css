@@ -11,7 +11,7 @@
 
 #keyboard{
   width: 100dvw;
-  height: 100dvh;
+  height: 80dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@
 
 .text-area{
   width: 95dvw;
-  height: auto;
+  height: 15dvh;
   padding: 10px;
   font-size: 1.8rem;
 }
