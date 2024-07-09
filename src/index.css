@@ -10,7 +10,7 @@
 }
 
 #keyboard{
-  width: 100dvw;
+  /* width: 100dvw; */
   height: 80dvh;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,27 @@
   margin: 10px;
   transition: background-color 0.3s ease-in;
 }
+
+.tab-btn{
+  width: 150px;
+}
+
+.backspace-btn{
+  width: 150px;
+}
+
+.caps-btn{
+  width: 150px;
+}
+
+.shift-btn{
+  width: 150px;
+}
+
+.space-btn{
+width: 400px;
+}
+
 
 .general-btn.active{
   background-color: purple;
