@@ -11,6 +11,7 @@ Accepting PRs! Will update guidelines soon
 
 ## Installation ⚙
 Follow these steps: 
+**ALERT: INSTALLATION SETUPS HAVE BEEN CHANGED. I WILL UPDATE THE STEPS AS SOON AS I FREE**
 
 1) Make sure you have git installed and added on PATH.
 2) Make sure you have node installed and added on PATH.
