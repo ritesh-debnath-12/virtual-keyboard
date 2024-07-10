@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import axios from "axios"; //This library is the reason, why backend engineers get no sleep
 import KButton from "./Buttons";
 import TextArea from "./TextArea";
 
@@ -44,11 +45,15 @@ function Keyboard() {
   };
 
   // Add an event listener to the keyboard div to detect key is pressed down
-  const detectKeyDown = (event) => {
+  const detectKeyDown = async (event) => {
     // console.log("Key Pressed"); DEBUG STATEMENT REMOVED....
     // Handle Shift key press
     if (event.key === "Shift") {
       setIsShiftHolded(true);
+    }
+    if (event.key === "Enter") {
+      console.log(text);
+      await sendTextDataToServer(text);
     }
     let btn = document.getElementById(event.code);
     if (btn) {
@@ -86,6 +91,45 @@ function Keyboard() {
     }
   };
 
+  const sendTextDataToServer = async (text) => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:3000/save-text",
+        new URLSearchParams({ text }),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      ); //wtf lmao
+
+      const fileNames = [
+        "epikFile.txt",
+        "urWill.txt",
+        "wilson.txt",
+        "kai-leng.txt",
+        "jenkins.txt",
+        "117.txt",
+        "AllHailTheEmperor.txt",
+        "Cadia.txt",
+        "CoreyTaylor.txt",
+        "DoomGuy.txt",
+        "Nokotan.txt",
+      ];
+      const generateFileName =
+        fileNames[Math.floor(Math.random() * fileNames.length)];
+      // This part handles the file download, by creating a blob and a link element, and then simulating a click on the link element
+      // to download the file
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${generateFileName}`); //I will go insane, why does this onkly work with a template string!?!?!???
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.log("Critical Error occured: ", error);
+    }
+  };
   return (
     <div
       div
@@ -306,6 +350,11 @@ function Keyboard() {
             className="general-btn"
             text={isShiftHolded ? "|" : "\\"}
           ></KButton>
+          <KButton
+            id="Enter"
+            className="general-btn enter-btn"
+            text="Enter">
+            </KButton>
         </div>
         <div id="bottom-row">
           <KButton
