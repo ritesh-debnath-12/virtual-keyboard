@@ -79,6 +79,9 @@ git clone https://github.com/ritesh-debnath-12/virtual-keyboard
     ```bash
     source install.sh & source runner.sh
     ```
+It should look like this:
+![](docs/images/vite-run-success.png)
+
 Whichever method you chose, server should be running...*Press O in the terminal to pop open a browser window* or *navigate yourself*
 
 ## After Installation...😅
