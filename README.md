@@ -47,9 +47,9 @@ Accepting PRs! Will update guidelines soon
 
 If all the 5 commands worked, please skip this part.
 Otherwise, here are links to download the necessary packages:
-1) Python: ![Python](https://img.shields.io/badge/python-install-yellow?style=plastic&logo=python&link=https%3A%2F%2Fwww.python.org%2Fdownloads%2F)
-2) Node: ![NodeJS](https://img.shields.io/badge/node-install-%235FA04E?style=plastic&logo=nodedotjs&link=https%3A%2F%2Fnodejs.org%2Fen%2Fdownload%2Fpackage-manager%2Fcurrent)
-3) Git: ![Git](https://img.shields.io/badge/git-install-%23F05032?style=plastic&logo=git&link=https%3A%2F%2Fgit-scm.com%2Fdownloads)
+1) Python: [![Python](https://img.shields.io/badge/python-install-yellow?style=plastic&logo=python)](https://www.python.org/downloads/)
+2) Node: [![NodeJS](https://img.shields.io/badge/node-install-%235FA04E?style=plastic&logo=nodedotjs)](https://nodejs.org/en/download/package-manager/current)
+3) Git: [![Git](https://img.shields.io/badge/git-install-%23F05032?style=plastic&logo=git)](https://git-scm.com/downloads)
 <br>
 Follow the steps, and you should be good to go...
 
